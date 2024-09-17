@@ -7,3 +7,4 @@ while k < indice:
     soma = soma + k
 
 print( soma )
+# resultado variavel soma = 91
