@@ -1,0 +1,34 @@
+
+import json
+
+with open("dados.json", 'r') as dados_json:
+    dados = json.load(dados_json)
+
+valores = [(faturamento['dia'],faturamento['valor']) for faturamento in dados if faturamento['valor'] > 0 ]
+
+data, menor_valor = min( valores, key=lambda x: x[1] )
+menor_valorf = f"{menor_valor:,.2f}"
+
+print( f"Dia {data}, Menor valor {menor_valorf}" )
+print("_"*30)
+
+data, maior_valor = max(valores, key=lambda x: x[1])
+maior_valorf = f"{maior_valor:,.2f}"
+
+print( f"Dia {data}, Menor valor {maior_valorf}" )
+print("_"*30)
+
+total_faturamento = sum( faturamento for nome, faturamento in valores )
+media_faturamento = total_faturamento / len(valores)
+
+acima_media = [(data, valor) for data, valor in valores if valor > media_faturamento]
+
+acima_media_ordenada = sorted(acima_media, key=lambda x: x[1],reverse=True)
+
+acima_mediaf = [ (data,f"{valor:,.2f}") for data, valor in acima_media_ordenada ]
+
+if acima_mediaf:
+   
+    for data, valor in acima_mediaf:
+        print(f"{data} - {valor}", )
+
