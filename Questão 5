@@ -1,0 +1,9 @@
+
+frase = "!aserpme a etnematnuj recserc e laicnetop uem o rartsom ed edadinutropo a ret ed airatsoG"
+
+frase_invertida = ""
+
+for i in range(len(frase) - 1, -1, -1):
+    frase_invertida += frase[i]
+
+print(frase_invertida)
